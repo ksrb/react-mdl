@@ -1,0 +1,40 @@
+'use strict';
+
+import React, { PropTypes } from 'react';
+import classNames from 'classnames';
+import MDL from '../mdlbase';
+import basicClassCreator from '../utils/basicClassCreator';
+
+class Layout extends MDL.UpgradedComponent {
+  static propTypes = {
+    className: PropTypes.string,
+    fixedDrawer: PropTypes.bool,
+    fixedHeader: PropTypes.bool,
+    fixedTabs: PropTypes.bool,
+  }
+
+  render() {
+    let { className, fixedDrawer, fixedHeader, fixedTabs, ...otherProps } = this.props;
+
+    let classes = classNames('mdl-layout mdl-js-layout', {
+      'mdl-layout--fixed-drawer': fixedDrawer,
+      'mdl-layout--fixed-header': fixedHeader,
+      'mdl-layout--fixed-tabs': fixedTabs,
+    }, className);
+
+    return (
+      <div className={classes} {...otherProps}>
+        {this.props.children}
+        </div>
+    );
+  }
+}
+
+export default Layout;
+export Header from './Header';
+export Drawer from './Drawer';
+export HeaderRow from './HeaderRow';
+export Navigation from './Navigation';
+export HeaderTabs from './HeaderTabs';
+export Spacer from './Spacer';
+export let Content = basicClassCreator('mdl-layout__content', 'main');
