@@ -4,7 +4,7 @@ import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import MDL from './mdlbase';
 
-class DataTable extends MDL.UpgradedComponent {
+class DataTable extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     columns: PropTypes.arrayOf(

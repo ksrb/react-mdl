@@ -14,26 +14,26 @@ class Button extends MDL.UpgradedComponent {
     ripple: PropTypes.bool,
   }
 
+  static defaultProps = {
+    ripple: true,
+  }
+
   render() {
-    let { accent, className, colored,
-      primary, raised, ripple, ...otherProps } = this.props;
+    let { accent, className, colored, primary, raised, ripple, ...otherProps } = this.props;
 
-      // enable ripple by default
-      ripple = ripple !== false;
+    let buttonClasses = classNames('mdl-button mdl-js-button', {
+      'mdl-js-ripple-effect': ripple,
+      'mdl-button--raised': raised,
+      'mdl-button--colored': colored,
+      'mdl-button--primary': primary,
+      'mdl-button--accent': accent,
+    }, className);
 
-      let buttonClasses = classNames('mdl-button mdl-js-button', {
-        'mdl-js-ripple-effect': ripple,
-        'mdl-button--raised': raised,
-        'mdl-button--colored': colored,
-        'mdl-button--primary': primary,
-        'mdl-button--accent': accent,
-      }, className);
-
-      return (
-        <button className={buttonClasses} {...otherProps}>
-          {this.props.children}
-        </button>
-      );
+    return (
+      <button className={buttonClasses} {...otherProps}>
+        {this.props.children}
+      </button>
+    );
   }
 }
 

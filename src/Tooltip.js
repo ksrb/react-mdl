@@ -25,13 +25,9 @@ class Tooltip extends MDL.UpgradedComponent {
       label = <span>{label}</span>;
     }
 
-    let element;
-    if (typeof children === 'string') {
-      element = <span>{children}</span>;
-    }
-    else {
-      element = React.Children.only(this.props.children);
-    }
+    let element = (typeof children === 'string')
+      ? <span>{children}</span>
+      : React.Children.only(this.props.children);
 
     return (
       <div style={{display: 'inline-block'}} {...otherProps}>
@@ -40,7 +36,7 @@ class Tooltip extends MDL.UpgradedComponent {
           htmlFor: id,
           className: classNames('mdl-tooltip', { 'mdl-tooltip--large': large }),
         })}
-        </div>
+      </div>
     );
   }
 }

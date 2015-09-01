@@ -18,6 +18,10 @@ class Radio extends MDL.UpgradedComponent {
     ]).isRequired,
   }
 
+  static defaultProps = {
+    ripple: true,
+  }
+
   _handleChange = (event) => {
     this.props.onChange(event.target.value);
   }
@@ -25,9 +29,6 @@ class Radio extends MDL.UpgradedComponent {
   render() {
     let { checked, className, disabled, name, ripple, value } = this.props;
     let inputId = 'radio-' + name.replace(/\s+/g, '') + '-' + value.replace(/\s+/g, '');
-
-    // enable ripple by default
-    ripple = ripple !== false;
 
     let classes = classNames('mdl-radio mdl-js-radio', {
       'mdl-js-ripple-effect': ripple,

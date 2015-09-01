@@ -25,7 +25,7 @@ class Layout extends MDL.UpgradedComponent {
     return (
       <div className={classes} {...otherProps}>
         {this.props.children}
-        </div>
+      </div>
     );
   }
 }

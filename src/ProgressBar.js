@@ -24,13 +24,13 @@ class ProgressBar extends MDL.UpgradedComponent {
   }
 
   setProgress(progress) {
-    if (!this.props.indeterminate && progress !== undefined) {
+    if (!this.props.indeterminate && typeof progress !== 'undefined') {
       React.findDOMNode(this).MaterialProgress.setProgress(progress);
     }
   }
 
   setBuffer(buffer) {
-    if (buffer !== undefined) {
+    if (typeof buffer !== 'undefined') {
       React.findDOMNode(this).MaterialProgress.setBuffer(buffer);
     }
   }

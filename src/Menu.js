@@ -13,13 +13,14 @@ class Menu extends MDL.UpgradedComponent {
     valign: PropTypes.oneOf(['bottom', 'top']),
   }
 
+  static defaultProps = {
+    align: 'left',
+    valign: 'bottom',
+    ripple: true,
+  }
+
   render() {
     let { align, className, ripple, target, valign, ...otherProps} = this.props;
-
-    align = align || 'left';
-    valign = valign || 'bottom';
-    // enable ripple by default
-    ripple = ripple !== false;
 
     let classes = classNames('mdl-menu mdl-js-menu', {
       [`mdl-menu--${valign}-${align}`]: true,
@@ -29,13 +30,12 @@ class Menu extends MDL.UpgradedComponent {
     return (
       <ul className={classes} htmlFor={target} {...otherProps}>
         {this.props.children}
-        </ul>
+      </ul>
     );
   }
 }
 
-export class MenuItem extends React.Component {
-
+class MenuItem extends React.Component {
   render() {
     let { className, ...otherProps } = this.props;
 
@@ -48,3 +48,5 @@ export class MenuItem extends React.Component {
 }
 
 export default Menu;
+export { MenuItem };
+

@@ -14,6 +14,10 @@ class Switch extends MDL.UpgradedComponent {
     ripple: PropTypes.bool,
   }
 
+  static defaultProps = {
+    ripple: true,
+  }
+
   _handleChange = (event) => {
     this.props.onChange(event.target.checked);
   }
@@ -21,9 +25,6 @@ class Switch extends MDL.UpgradedComponent {
   render() {
     let { checked, className, disabled, id, ripple } = this.props;
     let inputId = 'switch-' + id;
-
-    // enable ripple by default
-    ripple = ripple !== false;
 
     let classes = classNames('mdl-switch mdl-js-switch', {
       'mdl-js-ripple-effect': ripple,
