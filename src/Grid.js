@@ -35,7 +35,7 @@ class Cell extends React.Component {
 
     let classes = classNames('mdl-cell', {
       [`mdl-cell--${col}-col`]: true,
-      [`mdl-cell--${phone}-col-tablet`]: typeof phone !== 'undefined',
+      [`mdl-cell--${phone}-col-phone`]: typeof phone !== 'undefined',
       [`mdl-cell--${tablet}-col-tablet`]: typeof tablet !== 'undefined',
       [`mdl-cell--${align}`]: typeof align !== 'undefined',
     }, className);
