@@ -7,7 +7,7 @@ import cloneChildren from '../utils/cloneChildren';
 class HeaderTabs extends React.Component {
   static propTypes = {
     className: PropTypes.string,
-    ripple: PropTypes.string,
+    ripple: PropTypes.bool,
   }
 
   static defaultProps = {
