@@ -16,7 +16,7 @@ class Textfield extends MDL.UpgradedComponent {
     inputClassName: PropTypes.string,
     label: PropTypes.string.isRequired,
     maxRows: PropTypes.number,
-    onChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func,
     pattern: PropTypes.string,
     required: PropTypes.bool,
     rows: PropTypes.number,
@@ -34,6 +34,12 @@ class Textfield extends MDL.UpgradedComponent {
     if (this.props.disabled !== prevProps.disabled) {
       React.findDOMNode(this).MaterialTextfield.checkDisabled();
     }
+    if (this.props.error && !this.props.pattern) {
+      // At every re-render, mdl will set 'is-invalid' class according to the 'pattern' props validity
+      // If we want to force the error display, we have to override mdl 'is-invalid' value.
+      let elt = React.findDOMNode(this);
+      elt.className = classNames(elt.className, 'is-invalid');
+    }
   }
 
   _handleChange = (e) => {
@@ -47,20 +53,25 @@ class Textfield extends MDL.UpgradedComponent {
     let inputId = 'textfield-' + label.replace(/[^a-z0-9]/gi, '');
     let inputTag = hasRows || maxRows > 1 ? 'textarea' : 'input';
 
-    let input = React.createElement(inputTag, {
+    let inputProps = {
       className: classNames('mdl-textfield__input', inputClassName),
       id: inputId,
       key: inputId,
       value,
-      onChange: this._handleChange,
       rows,
       ...otherProps,
-    });
+    };
+
+    if (onChange) { inputProps.onChange = this._handleChange; }
+
+    let input = React.createElement(inputTag, inputProps);
 
     let inputAndLabelError = [
       input,
-      (<label key="label" className="mdl-textfield__label" htmlFor={inputId}>{label}</label>),
-      !error ? null : (<span key="error" className="mdl-textfield__error">{error}</span>),
+      <label key="label" className="mdl-textfield__label" htmlFor={inputId}>{label}</label>,
+        error ? (
+          <span key="error" className="mdl-textfield__error">{error}</span>
+      ) : null,
     ];
 
     let containerClasses = classNames('mdl-textfield mdl-js-textfield', {
@@ -68,9 +79,7 @@ class Textfield extends MDL.UpgradedComponent {
       'mdl-textfield--expandable': expandable,
     }, className);
 
-    let field = (expandable)
-      ? React.createElement('div', {className: 'mdl-textfield__expandable-holder'}, inputAndLabelError)
-      : inputAndLabelError;
+    let field = (expandable) ? <div className='mdl-textfield__expandable-holder'>{inputAndLabelError}</div> : inputAndLabelError;
 
     return (
       <div className={containerClasses} style={style}>
