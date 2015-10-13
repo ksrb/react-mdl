@@ -29,7 +29,9 @@ class Textfield extends MDL.UpgradedComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if ( this.props.required !== prevProps.required || this.props.pattern !== prevProps.pattern) {
+    if (this.props.required !== prevProps.required ||
+        this.props.pattern !== prevProps.pattern ||
+          this.props.value !== prevProps.value) {
       ReactDOM.findDOMNode(this).MaterialTextfield.checkValidity();
     }
     if (this.props.disabled !== prevProps.disabled) {
@@ -40,6 +42,9 @@ class Textfield extends MDL.UpgradedComponent {
       // If we want to force the error display, we have to override mdl 'is-invalid' value.
       let elt = ReactDOM.findDOMNode(this);
       elt.className = classNames(elt.className, 'is-invalid');
+    }
+    if (this.props.value !== prevProps.value) {
+      ReactDOM.findDOMNode(this).MaterialTextfield.checkDirty();
     }
   }
 
@@ -88,9 +93,9 @@ class Textfield extends MDL.UpgradedComponent {
           <label className="mdl-button mdl-js-button mdl-button--icon" htmlFor={inputId}>
             <i className="material-icons">{expandableIcon}</i>
           </label>
-        )}
-        {field}
-      </div>
+          )}
+          {field}
+          </div>
     );
   }
 }
