@@ -2,16 +2,17 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class MDLComponent extends React.Component { }
 
 class MDLUpgradedComponent extends MDLComponent {
   componentDidMount() {
-    componentHandler.upgradeElement(React.findDOMNode(this));
+    componentHandler.upgradeElement(ReactDOM.findDOMNode(this));
   }
 
   componentWillUnmount() {
-    componentHandler.downgradeElements(React.findDOMNode(this));
+    componentHandler.downgradeElements(ReactDOM.findDOMNode(this));
   }
 }
 
