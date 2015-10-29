@@ -49,7 +49,7 @@ class Textfield extends MDL.UpgradedComponent {
   }
 
   _handleChange = (e) => {
-    this.props.onChange(e.target.value);
+    this.props.onChange(e.target.value, e.target.validity.valid);
   }
 
   render() {
