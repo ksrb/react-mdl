@@ -1,0 +1,43 @@
+@import url('https://storage.googleapis.com/code.getmdl.io/1.0.5/material.indigo-orange.min.css');
+
+/*===START: App ===*/
+.app-content {
+  background: #FAFAFA;
+}
+.app-drawer-links {
+  display: block;
+  padding: 10px 0;
+}
+/*===END:  App ===*/
+.component-page-header {
+  padding: 40px 40px 0px 40px;
+}
+
+.component-page-name{
+  font-size: 16px;
+  font-weight: 500px;
+}
+
+.space-evenly-center,
+/* Components are wrapped */
+.space-evenly-center-children > *:first-child {
+  display: flex;
+  justify-content: space-around;
+  padding: 0 30%;
+}
+
+.snippet-demo {
+  padding-top: 60px;
+  padding-bottom: 40px;
+}
+
+.snippet-caption {
+  padding-top: 15px;
+  padding-bottom: 20px;
+  background: white;
+}
+
+.snippet-code {
+  background: #EBEBEB;
+  padding: 10px 20px;
+}
