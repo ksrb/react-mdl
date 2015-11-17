@@ -22,7 +22,7 @@ class Checkbox extends MDL.UpgradedComponent {
     let inputId = 'checkbox-' + (label || id).replace(/\s+/g, '');
 
     return (
-      <label className="mdl-checkbox mdl-js-checkbox" htmlFor={id}>
+      <label className="mdl-checkbox mdl-js-checkbox" htmlFor={inputId}>
         <input
           type="checkbox"
           id={inputId}

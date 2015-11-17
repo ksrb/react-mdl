@@ -32,7 +32,7 @@ class Demo extends React.Component {
             <div>
                 <p>Checkbox</p>
                 <Checkbox label="Checkbox" checked={this.state.checkbox1} onChange={linkToState(this, 'checkbox1')} />
-                <Checkbox label="Checkbox" checked={this.state.checkbox2} onChange={linkToState(this, 'checkbox2')} />
+                <Checkbox label="Checkbox2" checked={this.state.checkbox2} onChange={linkToState(this, 'checkbox2')} />
 
                 <p>Radio Button</p>
                 <RadioGroup name="demo" value={this.state.radio} onChange={linkToState(this, 'radio')}>
