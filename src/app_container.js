@@ -13,9 +13,12 @@ import {
 //Routes
 import Buttons from './buttons';
 
+import classNames from 'classnames';
+
 class AppContainer extends React.Component {
 
   static propTypes = {
+    currentComponent: PropTypes.elem,
     goForward: PropTypes.func,
   };
 
@@ -29,17 +32,51 @@ class AppContainer extends React.Component {
 
   render() {
     let links = [
-      {name: 'Badges'},
-      {name: 'Buttons', component: Buttons},
-      {name: 'Cards'},
-      {name: 'Layout'},
-      {name: 'Loading'},
-      {name: 'Menus'},
-      {name: 'Sliders'},
-      {name: 'Tables'},
-      {name: 'Text Fields'},
-      {name: 'Toggles'},
-      {name: 'Tooltips'},
+      {
+        name: 'Badges',
+        imgPath: './img/comp_badges.png',
+      },
+      {
+        name: 'Buttons',
+        imgPath: './img/comp_buttons.png',
+        component: Buttons,
+      },
+      {
+        name: 'Cards',
+        imgPath: './img/comp_cards.png',
+      },
+      {
+        name: 'Layout',
+        imgPath: './img/comp_layout.png',
+      },
+      {
+        name: 'Loading',
+        imgPath: './img/comp_loading.png',
+      },
+      {
+        name: 'Menus',
+        imgPath: './img/comp_menus.png',
+      },
+      {
+        name: 'Sliders',
+        imgPath: './img/comp_sliders.png',
+      },
+      {
+        name: 'Tables',
+        imgPath: './img/comp_tables.png',
+      },
+      {
+        name: 'Text Fields',
+        imgPath: './img/comp_textfields.png',
+      },
+      {
+        name: 'Toggles',
+        imgPath: './img/comp_toggles.png',
+      },
+      {
+        name: 'Tooltips',
+        imgPath: './img/comp_tooltips.png',
+      },
     ];
 
     return (
@@ -49,13 +86,21 @@ class AppContainer extends React.Component {
             Components
           </a>
         </Header>
-        <Drawer>
+        <Drawer className='app-drawer'>
           {links.map((link, index) => {
             return (
               <a
-                className='app-drawer-links'
+                className={
+                  classNames(
+                    'app-drawer-link',
+                    {'is-active': link.component === this.props.currentComponent}
+                  )
+                }
                 onClick={this._handleLinkClicked.bind(this, link)}
                 key={index}>
+                <img
+                  className='app-drawer-link-img'
+                  src={link.imgPath}/>
                 {link.name}
               </a>
             );

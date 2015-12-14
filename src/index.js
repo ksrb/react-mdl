@@ -33,8 +33,13 @@ class App extends React.Component {
       navigator.push({...opts, index: nextIndex});
     };
 
+    let currentRoutes = navigator.getCurrentRoutes();
+    let currentComponent = currentRoutes[currentRoutes.length - 1].component;
+
     return (
-      <AppContainer goForward={props.goForward}>
+      <AppContainer
+        currentComponent={currentComponent}
+        goForward={props.goForward}>
         {React.createElement(route.component, props, null)}
       </AppContainer>
     );
