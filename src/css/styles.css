@@ -30,9 +30,20 @@
   padding: 40px 0px 0px 40px;
 }
 
-.component-page-name{
+.component-page-name {
   font-size: 16px;
   font-weight: 500px;
+}
+
+.component-page-link {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  margin-bottom: 10px;
+}
+
+.component-page-link-icon {
+  margin-right: 10px;
 }
 
 .space-evenly-center,

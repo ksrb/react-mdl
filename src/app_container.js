@@ -18,7 +18,7 @@ import classNames from 'classnames';
 class AppContainer extends React.Component {
 
   static propTypes = {
-    currentComponent: PropTypes.elem,
+    currentComponent: PropTypes.func,
     goForward: PropTypes.func,
   };
 

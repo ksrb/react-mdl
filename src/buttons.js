@@ -12,6 +12,9 @@ import ButtonNoColorFlat from './button_no_color_flat_snippet';
 import ButtonFlatSnippet from './button_flat_snippet';
 import IconButtonSnippet from './icon_button_snippet';
 
+import GithubLogo from './github_logo';
+import MdlLogo from './mdl_logo';
+
 class Buttons extends React.Component {
 
   constructor(props) {
@@ -23,7 +26,21 @@ class Buttons extends React.Component {
       <div>
         <div className='component-page-header'>
           <h4 className='component-page-name'>BUTTONS</h4>
-          <p>Variations on Material Design Buttons.</p>
+          <p>Variations on React Material Design Buttons.</p>
+          <a
+            className='component-page-link'
+            target='_blank'
+            href='http://www.getmdl.io/components/index.html#buttons-section'>
+            <MdlLogo className='component-page-link-icon'/>
+            <span>Material Design page</span>
+          </a>
+          <a
+            className='component-page-link'
+            target='_blank'
+            href='https://github.com/bh5-js/react-mdl/blob/master/src/Button.js'>
+            <GithubLogo className='component-page-link-icon'/>
+            <span>Github component source</span>
+          </a>
         </div>
 
         <Snippet
